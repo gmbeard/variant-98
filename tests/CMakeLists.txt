@@ -9,7 +9,7 @@ add_executable(
 )
 
 add_definitions(
-    -Wall -Werror -Wextra -pedantic
+    -std=c++98 -Wall -Werror -Wextra -pedantic
 )
 
 add_test(
