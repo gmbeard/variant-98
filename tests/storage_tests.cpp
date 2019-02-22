@@ -1,4 +1,5 @@
-#include "gmb/variant_impl.hpp"
+#include "gmb/detail/variant_storage.hpp"
+#include "gmb/detail/variant_impl.hpp"
 #include <cassert>
 #include <iostream>
 
@@ -8,12 +9,13 @@ int main(int argc, char const** argv) {
     UNUSED(argc);
     UNUSED(argv);
 
-    gmb::VariantStorage<GMB_TL2(char, float)> s;
+    typedef GMB_TL2(char, float) Types;
+    gmb::detail::VariantStorage<Types> s;
 
-    size_t i = gmb::copy_construct_storage_with(s, 1.0f);
+    size_t i = gmb::detail::copy_construct_storage_with<Types>(s.data(), 1.0f);
     assert(i == 1);
 
-    i = gmb::default_construct(s);
+    i = default_construct(s);
     assert(i == 0);
 
     return 0;

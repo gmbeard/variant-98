@@ -46,6 +46,12 @@ struct EnableIf { };
 template<typename T>
 struct EnableIf<true, T> { typedef T type; };
 
+template<typename T, typename U>
+struct IsSame { enum { value = false }; };
+
+template<typename T>
+struct IsSame<T, T> { enum { value = true }; };
+
 }
 }
 
